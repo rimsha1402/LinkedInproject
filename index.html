@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Relationship Inference Agent — maps who knows who in your LinkedIn network and how well, using comment analysis and interaction patterns.">
+  <title>Relationship Inference Agent — LinkedIn Network Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ===== HEADER ===== -->
+    <header class="app-header" id="app-header">
+      <div class="header-left">
+        <div class="logo-icon">RIA</div>
+        <div>
+          <div class="app-title">Relationship Inference Agent</div>
+          <div class="app-subtitle">LinkedIn Network Intelligence · Prototype</div>
+        </div>
+      </div>
+      <div class="header-stats">
+        <div class="stat-item">
+          <div class="stat-value accent-indigo">8</div>
+          <div class="stat-label">1st Degree</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value accent-emerald">7</div>
+          <div class="stat-label">2nd Degree</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value accent-amber">15</div>
+          <div class="stat-label">Relationships</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== MAIN GRID ===== -->
+    <div class="main-grid">
+
+      <!-- LEFT: Feed Observer -->
+      <section class="panel feed-panel" id="feed-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span class="dot"></span>
+            Feed Observer
+          </div>
+          <span class="panel-badge" id="feed-count">0</span>
+        </div>
+        <div class="panel-body" id="feed-list">
+          <!-- Feed items rendered by JS -->
+        </div>
+      </section>
+
+      <!-- CENTER: Network Graph -->
+      <section class="panel graph-panel" id="graph-panel">
+        <div class="panel-header">
+          <div class="panel-title">Relationship Graph</div>
+          <span class="panel-badge">Interactive</span>
+        </div>
+        <div class="panel-body" style="padding: 0; position: relative;">
+          <canvas id="network-graph"></canvas>
+        </div>
+      </section>
+
+      <!-- RIGHT TOP: Query Interface -->
+      <section class="panel query-panel" id="query-panel">
+        <div class="panel-header">
+          <div class="panel-title">Query</div>
+        </div>
+        <div class="panel-body">
+          <div class="query-input-wrap">
+            <span class="query-icon">&#x2315;</span>
+            <input
+              type="text"
+              id="query-input"
+              class="query-input"
+              placeholder="Who knows the founder of NeuralPath?"
+              autocomplete="off"
+            >
+          </div>
+          <div class="query-suggestions">
+            <span class="query-chip" data-query="Who knows Sarah Chen from NeuralPath?">Sarah Chen</span>
+            <span class="query-chip" data-query="Who knows someone at Stripe?">Stripe</span>
+            <span class="query-chip" data-query="Who knows Nina Patel from Sequoia?">Sequoia</span>
+            <span class="query-chip" data-query="Who knows Tom Brewster from DevStack?">DevStack</span>
+            <span class="query-chip" data-query="Who knows Emma Zhang from DeepMind?">DeepMind</span>
+            <span class="query-chip" data-query="Who knows someone at Canva?">Canva</span>
+            <span class="query-chip" data-query="Who knows someone at Shopify?">Shopify</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT BOTTOM: Results -->
+      <section class="panel results-panel" id="results-panel">
+        <div class="panel-header">
+          <div class="panel-title" id="results-title">Top Relationships</div>
+          <span class="panel-badge" id="results-count">5</span>
+        </div>
+        <div class="panel-body" id="results-list">
+          <!-- Results rendered by JS -->
+        </div>
+      </section>
+
+    </div><!-- /main-grid -->
+
+  </div><!-- /app-container -->
+
+  <!-- ===== DETAIL MODAL ===== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">X</button>
+      <div class="modal-title" id="modal-title-text"></div>
+      <div class="modal-subtitle" id="modal-subtitle-text"></div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
